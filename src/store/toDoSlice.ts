@@ -22,9 +22,7 @@ const toDoSlice = createSlice({
          localStorage.setItem('todos', JSON.stringify(state.toDos));
       },
       deleteToDo: (state, action: PayloadAction<number>) => {
-         state.toDos = state.toDos.map(
-            todo => todo.id === action.payload ? { ...todo, deleted: true } : todo
-         )
+         state.toDos = state.toDos.filter(todo => todo.id !== action.payload);
          localStorage.setItem('todos', JSON.stringify(state.toDos));
       },
       completeToDo: (state, action: PayloadAction<number>) => {
