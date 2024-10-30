@@ -70,10 +70,18 @@
    background: inherit;
    border: none;
    font-size: 18px;
-   border-bottom: 2px solid #000000;
+   text-decoration: none;
 }
 
 .linkButton:hover {
-   border-bottom: 2px solid #c91010;
+   border-bottom: 2px solid red;
    color: red;
+}
+
+
+.activeLink {
+   color: red;
+   border-bottom: 2px solid red;
+
+
 }
