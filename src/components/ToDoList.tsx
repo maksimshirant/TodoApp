@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AllTasks from './AllTasks';
 import DoneTasks from './DoneTasks';
 import ActiveTasks from './ActiveTasks';
+import Trash from './Trash';
 
 
 const ToDoList: FC = () => {
@@ -19,12 +20,15 @@ const ToDoList: FC = () => {
             <Link to="/activetasks">
                <button className={st.linkButton}>Активные</button>
             </Link>
-
+            <Link to="/trash">
+               <button className={st.linkButton}>Удаленные</button>
+            </Link>
          </div>
          <Routes>
             <Route path="/alltasks" element={<AllTasks />} />
             <Route path="/donetasks" element={<DoneTasks />} />
             <Route path="/activetasks" element={<ActiveTasks />} />
+            <Route path="/trash" element={<Trash />} />
          </Routes>
       </Router>
    );

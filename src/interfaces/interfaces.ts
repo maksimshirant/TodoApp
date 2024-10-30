@@ -5,7 +5,9 @@ export interface ToDo {
    deleted: boolean,
 }
 export interface ToDoState {
-   toDos: ToDo[]
+   toDos: ToDo[],
+   deletedToDos: ToDo[];
+
 }
 export interface AuthState {
    isAuthTrue: boolean

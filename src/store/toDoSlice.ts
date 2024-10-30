@@ -5,6 +5,7 @@ import { ToDo, ToDoState } from '../interfaces/interfaces';
 
 const initialState: ToDoState = {
    toDos: JSON.parse(localStorage.getItem('todos') || '[]'),
+   deletedToDos: [],
 }
 
 const toDoSlice = createSlice({
@@ -22,8 +23,13 @@ const toDoSlice = createSlice({
          localStorage.setItem('todos', JSON.stringify(state.toDos));
       },
       deleteToDo: (state, action: PayloadAction<number>) => {
+         const todoToDelete = state.toDos.find(todo => todo.id === action.payload);
+         if (todoToDelete) {
+            state.deletedToDos.push(todoToDelete);
+         }
          state.toDos = state.toDos.filter(todo => todo.id !== action.payload);
          localStorage.setItem('todos', JSON.stringify(state.toDos));
+         localStorage.setItem('deletedTodos', JSON.stringify(state.deletedToDos));
       },
       completeToDo: (state, action: PayloadAction<number>) => {
          state.toDos = state.toDos.map(
@@ -32,8 +38,10 @@ const toDoSlice = createSlice({
          localStorage.setItem('todos', JSON.stringify(state.toDos));
       },
       deleteAllTodos: (state) => {
+         state.deletedToDos = [];
          state.toDos = []
          localStorage.setItem('todos', JSON.stringify(state.toDos));
+         localStorage.setItem('deletedTodos', JSON.stringify(state.deletedToDos));
       }
    }
 })
