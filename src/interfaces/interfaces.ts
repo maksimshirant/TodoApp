@@ -10,3 +10,6 @@ export interface ToDoState {
 export interface AuthState {
    isAuthTrue: boolean
 }
+export interface TaskProps {
+   todo: ToDo;
+}
