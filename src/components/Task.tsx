@@ -3,6 +3,8 @@ import { completeToDo, deleteToDo } from '../store/toDoSlice';
 import st from '../styles/toDoList.module.css'
 import { useDispatch } from 'react-redux';
 import { TaskProps } from '../interfaces/interfaces';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faEraser, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 const Task: FC<TaskProps> = ({ todo }) => {
    const dispatch = useDispatch()
    return (
@@ -14,11 +16,11 @@ const Task: FC<TaskProps> = ({ todo }) => {
             <button
                className={st.addButton}
                onClick={() => dispatch(completeToDo(todo.id))}>
-               <div style={todo.completed ? { color: 'green' } : { color: 'red' }}>{todo.completed ? 'Готово' : 'В процессе'}</div>
+               <div>{todo.completed ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faHourglassHalf} />}</div>
             </button>
             <button
                className={st.addButton}
-               onClick={() => dispatch(deleteToDo(todo.id))}>🗑</button>
+               onClick={() => dispatch(deleteToDo(todo.id))}><FontAwesomeIcon icon={faEraser} /></button>
          </div>
       </li>
    );

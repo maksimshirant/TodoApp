@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-rou
 import AllTasks from './AllTasks';
 import DoneTasks from './DoneTasks';
 import ActiveTasks from './ActiveTasks';
-import Trash from './Trash';
+
 
 
 const ToDoList: FC = () => {
@@ -18,29 +18,25 @@ const ToDoList: FC = () => {
                Все задачи
             </NavLink>
             <NavLink
-               to="/donetasks"
-               className={({ isActive }) => isActive ? `${st.linkButton} ${st.activeLink}` : st.linkButton}
-            >
-               Завершенные
-            </NavLink>
-            <NavLink
                to="/activetasks"
                className={({ isActive }) => isActive ? `${st.linkButton} ${st.activeLink}` : st.linkButton}
             >
                Активные
             </NavLink>
             <NavLink
-               to="/trash"
+               to="/donetasks"
                className={({ isActive }) => isActive ? `${st.linkButton} ${st.activeLink}` : st.linkButton}
             >
-               Удаленные
+               Завершенные
             </NavLink>
+
+
          </div>
          <Routes>
             <Route path="/alltasks" element={<AllTasks />} />
             <Route path="/donetasks" element={<DoneTasks />} />
             <Route path="/activetasks" element={<ActiveTasks />} />
-            <Route path="/trash" element={<Trash />} />
+
          </Routes>
       </Router>
    );

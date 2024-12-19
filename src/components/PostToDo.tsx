@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { deleteAllTodos } from '../store/toDoSlice';
 import { logOut } from '../store/authSlice';
 import { useAddToDo } from '../utils/toDoUtils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faPlus, faRightFromBracket, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 const PostToDo: FC = () => {
    const [newToDo, setNewToDo] = useState('')
@@ -24,8 +26,13 @@ const PostToDo: FC = () => {
    };
 
    return (
-      <div>
-         <h1 className={st.title}>To<span style={{ color: 'red', borderBottom: '5px solid #333' }}>Do</span> APP</h1>
+      <div className={st.container}>
+         <div className={st.logoLine}>
+            <h1 className={st.title}>To<span style={{ color: '#2563eb', borderBottom: '5px solid #333' }}>Do</span> APP<FontAwesomeIcon icon={faCheck} /> </h1>
+            <button className={st.exitButton} onClick={() => dispatch(logOut())}>
+               <FontAwesomeIcon icon={faRightFromBracket} />
+            </button>
+         </div>
          <div className={st.addBar}>
             <input className={st.toDoInput}
                type="text"
@@ -34,11 +41,14 @@ const PostToDo: FC = () => {
                onChange={(e) => setNewToDo(e.target.value)}
                onKeyDown={enterPost}
             />
-            <div>
-               <button className={st.addButton} onClick={handleClickAdd}>Добавить задачу </button>
-               <button className={st.addButton} onClick={() => dispatch(deleteAllTodos())}>Очистить список</button>
-               <button className={st.addButton} onClick={() => dispatch(logOut())}>Выход</button>
-            </div>
+            <button className={st.addButton} onClick={handleClickAdd}>
+               <FontAwesomeIcon icon={faPlus} />
+            </button>
+            <button className={st.addButton} onClick={() => dispatch(deleteAllTodos())}>
+               <FontAwesomeIcon icon={faTrashCan} />
+            </button>
+
+
          </div>
       </div>
    );

@@ -1,0 +1,8 @@
+.container {
+   max-width: 1000px;
+   margin: 20px auto;
+   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+   border-radius: 30px;
+   padding: 50px 30px;
+   background: linear-gradient(45deg, rgb(255, 210, 123), rgb(244, 241, 244), rgb(218, 227, 247));
+}

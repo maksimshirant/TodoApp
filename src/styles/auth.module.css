@@ -2,13 +2,23 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   background-color: #f4f4f4;
+
    color: #333;
    font-family: Arial, Helvetica, sans-serif;
 
 }
 
-
+.container {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+   border-radius: 30px;
+   padding: 50px 30px;
+   min-width: 600px;
+   background: linear-gradient(45deg, rgba(255, 210, 123), rgb(244, 241, 244), rgb(218, 227, 247));
+}
 
 .title {
    font-size: 40px;
@@ -16,6 +26,7 @@
    padding: 10px 0;
    text-align: center;
    text-shadow: 2px 2px 2px rgba (0, 0, 0, 0.5);
+
 }
 
 .loginBar {
@@ -24,22 +35,47 @@
 }
 
 .loginInput {
-   border-radius: 5px;
+   border-radius: 8px;
    padding: 10px 20px;
    font-size: 16px;
-
    margin: 10px 30px;
-   border: 1px solid #ccc;
+   border: none;
+   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   min-width: 300px;
+   opacity: 0.9;
+}
 
+.loginInput:focus {
+   border-color: #2563eb;
+   /* Акцентный синий цвет */
+   background-color: #fff;
+   /* Белый фон */
+   box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+   /* Синяя тень */
+}
+
+.loginInput::placeholder {
+   opacity: 0.5;
 }
 
 .loginButton {
-   border-radius: 5px;
+   border: none;
    padding: 10px 20px;
    font-size: 16px;
-
+   border-radius: 8px;
+   font-weight: 600;
    margin: 10px 30px;
-   border: 1px solid #ccc;
+   background-color: #d3e4f6;
+   opacity: 0.9;
+   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.2s ease, box-shadow 0.2s ease;
+   color: #2563eb;
+   text-align: center;
+}
+
+.loginButton:hover {
+   background-color: #2563eb;
+   color: #e4eef9
 }
 
 .smthWrong {
@@ -51,4 +87,5 @@
    padding: 10px;
    border: 1px solid #f5c6cd;
    text-align: center;
+   border-radius: 8px;
 }

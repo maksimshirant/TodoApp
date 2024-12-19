@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/authSlice';
 import st from '../styles/auth.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const Auth: FC = () => {
    const dispatch = useDispatch()
@@ -25,7 +27,7 @@ const Auth: FC = () => {
    };
    return (
       <div className={st.container}>
-         <h1 className={st.title}>Добро пожаловать в To<span style={{ color: 'red', borderBottom: '5px solid #333' }}>Do</span> APP</h1>
+         <h1 className={st.title}>To<span style={{ color: '#2563eb', borderBottom: '5px solid #333' }}>Do</span> APP<FontAwesomeIcon icon={faCheck} /></h1>
 
          <div className={st.loginBar}>
             <input className={st.loginInput}
@@ -44,6 +46,10 @@ const Auth: FC = () => {
             <button className={st.loginButton} onClick={handleLogin}>Войти</button>
          </div>
          {smthWrong && <p className={st.smthWrong}>{smthWrong}</p>}
+
+         <h6 style={{ marginTop: '20px', fontWeight: '300', fontSize: '10px' }}>* Логин и пароль вы можете уточнить у администратора @maksimshirant</h6>
+         <h6 style={{ fontWeight: '300', fontSize: '10px' }}>* Все записи хранятся только на вашем устройстве</h6>
+
       </div>
    );
 };
