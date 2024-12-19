@@ -5,11 +5,14 @@ import { deleteAllTodos } from '../store/toDoSlice';
 import { logOut } from '../store/authSlice';
 import { useAddToDo } from '../utils/toDoUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faPlus, faRightFromBracket, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faRightFromBracket, faToggleOn, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 
 const PostToDo: FC = () => {
    const [newToDo, setNewToDo] = useState('')
+
    const dispatch = useDispatch()
+
 
    const { handleAddNewToDo } = useAddToDo();
 
@@ -25,10 +28,12 @@ const PostToDo: FC = () => {
       setNewToDo('');
    };
 
+
+
    return (
       <div className={st.container}>
          <div className={st.logoLine}>
-            <h1 className={st.title}>To<span style={{ color: '#2563eb', borderBottom: '5px solid #333' }}>Do</span> APP<FontAwesomeIcon icon={faCheck} /> </h1>
+            <h1 className={st.title}>To<span style={{ color: '#2563eb', borderBottom: '5px solid #333' }}>Do</span> APP<FontAwesomeIcon icon={faToggleOn} /> </h1>
             <button className={st.exitButton} onClick={() => dispatch(logOut())}>
                <FontAwesomeIcon icon={faRightFromBracket} />
             </button>
@@ -41,15 +46,16 @@ const PostToDo: FC = () => {
                onChange={(e) => setNewToDo(e.target.value)}
                onKeyDown={enterPost}
             />
+
             <button className={st.addButton} onClick={handleClickAdd}>
                <FontAwesomeIcon icon={faPlus} />
             </button>
             <button className={st.addButton} onClick={() => dispatch(deleteAllTodos())}>
                <FontAwesomeIcon icon={faTrashCan} />
             </button>
-
-
          </div>
+
+
       </div>
    );
 };

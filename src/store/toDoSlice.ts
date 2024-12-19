@@ -42,9 +42,16 @@ const toDoSlice = createSlice({
          state.toDos = []
          localStorage.setItem('todos', JSON.stringify(state.toDos));
          localStorage.setItem('deletedTodos', JSON.stringify(state.deletedToDos));
-      }
+      },
+      editToDo: (state, action: PayloadAction<{ id: number, newText: string }>) => {
+         const todo = state.toDos.find(todo => todo.id === action.payload.id);
+         if (todo) {
+            todo.text = action.payload.newText;
+            localStorage.setItem('todos', JSON.stringify(state.toDos));
+         }
+      },
    }
 })
 
-export const { addNewToDo, deleteToDo, completeToDo, deleteAllTodos } = toDoSlice.actions;
+export const { addNewToDo, deleteToDo, completeToDo, deleteAllTodos, editToDo } = toDoSlice.actions;
 export default toDoSlice.reducer;
